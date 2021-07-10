@@ -38,8 +38,7 @@ class Home extends CI_Controller
 	public function word_order()
 	{
 		$word = trim($this->input->get("word",TRUE));
-		$new_word_ = $this->slugify($word);
-		$new_word = str_replace('-', '', $new_word_);
+		$new_word = $this->slugify($word);
 		// string kontrolü
 		if (ctype_alpha($new_word)) {
 			$words = $this->explode($word);
@@ -59,7 +58,7 @@ class Home extends CI_Controller
     $text = strtolower(str_replace($find, $replace, $text));
     $text = preg_replace("@[^A-Za-z0-9\-_\.\+]@i", ' ', $text);
     $text = trim(preg_replace('/\s+/', ' ', $text));
-    $text = str_replace(' ', '-', $text);
+    $text = str_replace(' ', '', $text);
 
     return $text;
 }
